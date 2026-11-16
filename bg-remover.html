@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free AI Background Remover Online - QuickTools Hub</title>
-    <meta name="description" content="Remove image backgrounds instantly with our free online tool. Clean, fast, and high-quality background removal right in your browser.">
+    <meta name="description" content="Remove image backgrounds instantly with our free AI browser tool. Clean, fast, and automatic background removal.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
@@ -27,21 +27,27 @@
         <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl">
             <div class="text-center mb-8">
                 <span class="bg-pink-500/10 text-pink-400 border border-pink-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">AI Powered</span>
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Background Remover</h1>
-                <p class="text-sm text-slate-400 mt-1">Upload any photo to automatically remove its background in seconds.</p>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">AI Background Remover</h1>
+                <p class="text-sm text-slate-400 mt-1">Upload any photo to automatically erase its background right in your browser.</p>
             </div>
 
             <!-- Upload Box -->
             <div class="border-2 border-dashed border-slate-700 hover:border-pink-500/50 rounded-2xl p-8 text-center transition bg-slate-900/40 cursor-pointer relative" id="drop-zone">
-                <input type="file" id="image-input" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" onchange="handleImage(event)">
+                <input type="file" id="image-input" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" onchange="processImage(event)">
                 <div class="flex flex-col items-center">
                     <div class="w-14 h-14 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-2xl mb-4">📥</div>
                     <p class="text-sm font-semibold text-white">Click to upload or drag & drop</p>
-                    <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, JPEG up to 10MB</p>
+                    <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, JPEG</p>
                 </div>
             </div>
 
-            <!-- Preview & Result Area -->
+            <!-- Loading State -->
+            <div id="loading-box" class="mt-8 hidden text-center py-10">
+                <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-pink-500 border-t-transparent"></div>
+                <p class="text-sm text-slate-300 mt-4 font-medium" id="loading-text">Processing AI background removal... (Takes a few seconds)</p>
+            </div>
+
+            <!-- Result Area -->
             <div id="result-container" class="mt-8 hidden space-y-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -51,23 +57,18 @@
                         </div>
                     </div>
                     <div>
-                        <p class="text-xs font-medium text-slate-400 mb-2">Processed Output (Simulated Clean)</p>
+                        <p class="text-xs font-medium text-slate-400 mb-2">Background Removed</p>
+                        <!-- Checkerboard background to show transparency -->
                         <div class="bg-[linear-gradient(45deg,#1e293b_25%,transparent_25%),linear-gradient(-45deg,#1e293b_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#1e293b_75%),linear-gradient(-45deg,transparent_75%,#1e293b_75%)] bg-[size:20px_20px] bg-[position:0_0,0_10px,10px_-10px,-10px_0px] rounded-xl p-2 border border-slate-700 h-48 flex items-center justify-center overflow-hidden">
                             <img id="processed-preview" class="max-h-full object-contain rounded-lg">
                         </div>
                     </div>
                 </div>
-                <button onclick="alert('Image processed successfully! (Connect API key for full automated cloud removal)')" class="w-full bg-pink-600 hover:bg-pink-500 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-pink-600/20 text-sm">
-                    Download Clean Image
-                </button>
+                <a id="download-btn" download="background-removed.png" class="block text-center w-full bg-pink-600 hover:bg-pink-500 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-pink-600/20 text-sm">
+                    Download Clean Image (PNG)
+                </a>
             </div>
         </div>
-
-        <!-- SEO Content Article -->
-        <article class="mt-12 bg-slate-800/30 border border-slate-700/40 rounded-3xl p-6 sm:p-8 text-sm text-slate-400 leading-relaxed">
-            <h2 class="text-lg font-bold text-white mb-3">Why Use Our Background Remover?</h2>
-            <p class="mb-3">Removing backgrounds from product photos, portraits, or graphics usually requires expensive software like Photoshop. Our free browser tool lets you isolate subjects instantly, making it ideal for e-commerce listings, YouTube thumbnails, and digital design.</p>
-        </article>
     </main>
 
     <!-- Footer -->
@@ -75,17 +76,41 @@
         <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
     </footer>
 
-    <script>
-        function handleImage(event) {
+    <!-- Real AI Background Removal Script using imgly library -->
+    <script type="module">
+        import { removeBackground } from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.7/+esm';
+
+        window.processImage = async function(event) {
             const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('original-preview').src = e.target.result;
-                    document.getElementById('processed-preview').src = e.target.result; // Preview placeholder
-                    document.getElementById('result-container').classList.remove('hidden');
-                }
-                reader.readAsDataURL(file);
+            if (!file) return;
+
+            // Show original preview
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('original-preview').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+
+            // Hide result, show loading
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('loading-box').classList.remove('hidden');
+
+            try {
+                // Run AI Background Removal
+                const blob = await removeBackground(file);
+                const url = URL.createObjectURL(blob);
+
+                // Show processed output
+                document.getElementById('processed-preview').src = url;
+                document.getElementById('download-btn').href = url;
+
+                // Hide loading, show result
+                document.getElementById('loading-box').classList.add('hidden');
+                document.getElementById('result-container').classList.remove('hidden');
+            } catch (error) {
+                console.error(error);
+                alert('Error processing image. Please try another image.');
+                document.getElementById('loading-box').classList.add('hidden');
             }
         }
     </script>
