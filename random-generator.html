@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number & Choice Generator - QuickTools Hub</title>
+    <meta name="description" content="Generate random numbers or pick random choices instantly with our free online tool.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
+            <nav class="space-x-4 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-indigo-400 transition">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        
+        <!-- Banner Icon Box -->
+        <div class="text-center mb-6">
+            <div class="w-full h-36 bg-gradient-to-r from-indigo-600/25 to-purple-600/25 border border-indigo-500/30 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <span class="text-4xl">🎲🔢</span>
+            </div>
+            <span class="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Utility Tool</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Random Number Generator</h1>
+            <p class="text-sm text-slate-400 mt-1">Generate custom random numbers instantly for games, raffles, or draws.</p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl mb-10 text-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto mb-6">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Minimum Value</label>
+                    <input type="number" id="min-val" value="1" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white text-center focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Maximum Value</label>
+                    <input type="number" id="max-val" value="100" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white text-center focus:outline-none focus:border-indigo-500">
+                </div>
+            </div>
+
+            <button onclick="generateRandom()" class="w-full max-w-md mx-auto bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3.5 rounded-xl transition shadow-lg shadow-indigo-600/20 text-sm block">
+                Generate Random Number
+            </button>
+
+            <div id="result" class="mt-8 hidden bg-slate-900/60 p-6 rounded-2xl border border-slate-700 max-w-md mx-auto">
+                <p class="text-xs uppercase tracking-wider text-slate-400 font-medium">Generated Number</p>
+                <p id="rand-output" class="text-4xl font-black text-indigo-400 mt-2">-</p>
+            </div>
+        </div>
+
+        <!-- SEO Article Section -->
+        <article class="bg-slate-800/30 border border-slate-700/40 rounded-3xl p-6 sm:p-8 text-sm text-slate-400 leading-relaxed space-y-4">
+            <h2 class="text-lg font-bold text-white">Why Use a Random Number Generator?</h2>
+            <p>Random number generators are useful in a wide variety of applications, including statistical sampling, cryptography, gaming, and organizing lucky draws or giveaways. Our tool lets you choose any custom range securely inside your browser.</p>
+        </article>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function generateRandom() {
+            const min = parseInt(document.getElementById('min-val').value);
+            const max = parseInt(document.getElementById('max-val').value);
+
+            if (isNaN(min) || isNaN(max) || min >= max) {
+                alert("Please enter a valid range (Min must be less than Max)!");
+                return;
+            }
+
+            const randNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById('rand-output').innerText = randNum;
+            document.getElementById('result').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

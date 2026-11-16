@@ -22,14 +22,19 @@
     </header>
 
     <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
-        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl">
-            <div class="text-center mb-6">
-                <span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Text Utility</span>
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Text Case Converter</h1>
-                <p class="text-sm text-slate-400 mt-1">Paste your text and transform its capitalization style in one click.</p>
+        
+        <!-- Banner Icon Box -->
+        <div class="text-center mb-6">
+            <div class="w-full h-36 bg-gradient-to-r from-amber-600/20 to-orange-600/20 border border-amber-500/30 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <span class="text-4xl">🔠✍️</span>
             </div>
+            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Text Utility</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Text Case Converter</h1>
+            <p class="text-sm text-slate-400 mt-1">Paste your text and transform its capitalization style in one click.</p>
+        </div>
 
-            <textarea id="text-input" rows="6" placeholder="Type or paste your text here..." class="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-amber-500 mb-4"></textarea>
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl mb-10">
+            <textarea id="text-input" rows="6" placeholder="Type or paste your text here..." class="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-amber-500 mb-4 resize-none"></textarea>
 
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4">
                 <button onclick="convertText('upper')" class="bg-slate-800 hover:bg-amber-600 text-white text-xs font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition">UPPERCASE</button>
@@ -43,6 +48,20 @@
                 <button onclick="document.getElementById('text-input').value = ''" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-5 py-3 rounded-xl transition text-sm">Clear</button>
             </div>
         </div>
+
+        <!-- SEO Article Section -->
+        <article class="bg-slate-800/30 border border-slate-700/40 rounded-3xl p-6 sm:p-8 text-sm text-slate-400 leading-relaxed space-y-4">
+            <h2 class="text-lg font-bold text-white">How to Use the Text Case Converter</h2>
+            <p>Our free online case converter allows you to quickly change any block of text between different capitalization formats. Whether you accidentally left your Caps Lock on or need to format headings properly, this tool saves you time.</p>
+            
+            <h3 class="text-base font-semibold text-white">Available Formatting Options:</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>UPPERCASE:</strong> Converts all letters to capital letters (ABC).</li>
+                <li><strong>lowercase:</strong> Converts all letters to small letters (abc).</li>
+                <li><strong>Title Case:</strong> Capitalizes the first letter of every word.</li>
+                <li><strong>Sentence case:</strong> Capitalizes only the first letter of each sentence.</li>
+            </ul>
+        </article>
     </main>
 
     <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">

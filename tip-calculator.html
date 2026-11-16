@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip & Bill Split Calculator - QuickTools Hub</title>
+    <meta name="description" content="Calculate restaurant tips and split bills easily among friends with our free online tip calculator.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-white">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
+            <nav class="space-x-4 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-amber-400 transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-amber-400 transition">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        
+        <!-- Banner Icon Box -->
+        <div class="text-center mb-6">
+            <div class="w-full h-36 bg-gradient-to-r from-amber-600/25 to-yellow-600/25 border border-amber-500/30 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <span class="text-4xl">🍽️💵</span>
+            </div>
+            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Financial Tool</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Tip & Bill Split Calculator</h1>
+            <p class="text-sm text-slate-400 mt-1">Calculate restaurant tips and split bills smoothly among friends.</p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl mb-10 space-y-4 max-w-md mx-auto">
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">Bill Amount ($ or Rs)</label>
+                <input type="number" id="bill-amt" placeholder="e.g. 5000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+            </div>
+
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">Tip Percentage (%)</label>
+                <input type="number" id="tip-pct" value="10" placeholder="e.g. 15" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+            </div>
+
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">Number of People to Split</label>
+                <input type="number" id="split-people" value="1" placeholder="e.g. 4" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+            </div>
+
+            <button onclick="calculateTip()" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-semibold py-3.5 rounded-xl transition shadow-lg shadow-amber-600/20 text-sm">
+                Calculate Total & Split
+            </button>
+
+            <div id="result" class="mt-8 hidden bg-slate-900/60 p-6 rounded-2xl border border-slate-700 text-center space-y-2">
+                <div class="flex justify-between text-xs text-slate-400">
+                    <span>Tip Amount:</span>
+                    <span id="tip-output" class="text-white font-bold">-</span>
+                </div>
+                <div class="flex justify-between text-xs text-slate-400 border-t border-slate-800 pt-2">
+                    <span>Total Bill (incl. tip):</span>
+                    <span id="total-output" class="text-white font-bold">-</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-300 border-t border-slate-800 pt-3 font-bold">
+                    <span>Per Person Pays:</span>
+                    <span id="per-person" class="text-amber-400 text-lg">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Article Section -->
+        <article class="bg-slate-800/30 border border-slate-700/40 rounded-3xl p-6 sm:p-8 text-sm text-slate-400 leading-relaxed space-y-4">
+            <h2 class="text-lg font-bold text-white">How to Split Restaurant Bills and Tips</h2>
+            <p>Dining out with a group is fun, but splitting checks and calculating individual tip shares can get messy. Our tip calculator divides the total amount accurately among all participants.</p>
+        </article>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calculateTip() {
+            const bill = parseFloat(document.getElementById('bill-amt').value);
+            const tipPct = parseFloat(document.getElementById('tip-pct').value);
+            const people = parseInt(document.getElementById('split-people').value);
+
+            if (isNaN(bill) || isNaN(tipPct) || isNaN(people) || people <= 0) {
+                alert("Please enter valid numbers!");
+                return;
+            }
+
+            const tipAmount = (bill * tipPct) / 100;
+            const totalBill = bill + tipAmount;
+            const perPerson = totalBill / people;
+
+            document.getElementById('tip-output').innerText = tipAmount.toFixed(2);
+            document.getElementById('total-output').innerText = totalBill.toFixed(2);
+            document.getElementById('per-person').innerText = perPerson.toFixed(2);
+            document.getElementById('result').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

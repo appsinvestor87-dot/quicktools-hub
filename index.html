@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickTools Hub - Free Online Micro Tools & Utilities</title>
-    <meta name="description" content="Discover free, fast, and secure browser-based tools including QR code generator, password generator, age calculator, BMI calculator, stopwatch, and unit converter.">
+    <meta name="description" content="Discover free, fast, and secure browser-based tools categorized for your daily productivity, calculations, and security needs.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
@@ -28,7 +28,7 @@
 
     <!-- Hero Section -->
     <main class="max-w-6xl mx-auto px-4 py-16 w-full flex-grow">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-10">
             <span class="inline-block bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
                 ✨ Free Web Utilities & Productivity Suite
             </span>
@@ -40,146 +40,207 @@
             </p>
         </div>
 
-        <!-- Tools Grid Section (10 Working Tools) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Category Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-2 mb-12">
+            <button onclick="filterCategory('all')" id="btn-all" class="cat-btn bg-indigo-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-lg shadow-indigo-600/20">All Tools</button>
+            <button onclick="filterCategory('calc')" id="btn-calc" class="cat-btn bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-5 py-2.5 rounded-xl text-xs font-semibold transition">Calculators & Math</button>
+            <button onclick="filterCategory('text')" id="btn-text" class="cat-btn bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-5 py-2.5 rounded-xl text-xs font-semibold transition">Text & Writing</button>
+            <button onclick="filterCategory('security')" id="btn-security" class="cat-btn bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-5 py-2.5 rounded-xl text-xs font-semibold transition">Security & Dev</button>
+            <button onclick="filterCategory('utility')" id="btn-utility" class="cat-btn bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-5 py-2.5 rounded-xl text-xs font-semibold transition">Daily Utilities</button>
+        </div>
+
+        <!-- Tools Grid Section -->
+        <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <!-- Tool 1: Password Generator -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col justify-between group">
+            <!-- Tool 1: Password Generator (Security) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col justify-between group" data-category="security">
                 <div>
                     <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🔐</div>
                     <h2 class="text-xl font-bold text-white">Password Generator</h2>
                     <p class="text-slate-400 text-sm mt-2 leading-relaxed">Generate strong, unbreakable random passwords with custom length and symbols.</p>
                 </div>
                 <div class="mt-8">
-                    <a href="password-generator.html" class="inline-flex items-center justify-center w-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-emerald-600/20">
-                        Launch Tool &rarr;
-                    </a>
+                    <a href="password-generator.html" class="inline-flex items-center justify-center w-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-emerald-600/20">Launch Tool &rarr;</a>
                 </div>
             </div>
 
-            <!-- Tool 2: Age Calculator -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 flex flex-col justify-between group">
+            <!-- Tool 2: Age Calculator (Calc) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 flex flex-col justify-between group" data-category="calc">
                 <div>
                     <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📅</div>
                     <h2 class="text-xl font-bold text-white">Age Calculator</h2>
                     <p class="text-slate-400 text-sm mt-2 leading-relaxed">Calculate your exact age in years, months, and days instantly.</p>
                 </div>
                 <div class="mt-8">
-                    <a href="age-calculator.html" class="inline-flex items-center justify-center w-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-purple-600/20">
-                        Launch Tool &rarr;
-                    </a>
+                    <a href="age-calculator.html" class="inline-flex items-center justify-center w-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-purple-600/20">Launch Tool &rarr;</a>
                 </div>
             </div>
 
-            <!-- Tool 3: QR Generator -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/10 flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📱</div>
-                    <h2 class="text-xl font-bold text-white">QR Code Generator</h2>
-                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Convert website links and text into scannable high-resolution QR codes.</p>
-                </div>
-                <div class="mt-8">
-                    <a href="qr-generator.html" class="inline-flex items-center justify-center w-full bg-pink-600 hover:bg-pink-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-pink-600/20">
-                        Launch Tool &rarr;
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tool 4: Word Counter -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📝</div>
-                    <h2 class="text-xl font-bold text-white">Word & Text Counter</h2>
-                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Real-time word, character, sentence, and paragraph counter for writers.</p>
-                </div>
-                <div class="mt-8">
-                    <a href="word-counter.html" class="inline-flex items-center justify-center w-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-blue-600/20">
-                        Launch Tool &rarr;
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tool 5: Text Case Converter -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🔠</div>
-                    <h2 class="text-xl font-bold text-white">Text Case Converter</h2>
-                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Transform text between UPPERCASE, lowercase, Title Case, and Sentence case.</p>
-                </div>
-                <div class="mt-8">
-                    <a href="case-converter.html" class="inline-flex items-center justify-center w-full bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-amber-600/20">
-                        Launch Tool &rarr;
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tool 6: Percentage Calculator -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📊</div>
-                    <h2 class="text-xl font-bold text-white">Percentage Calculator</h2>
-                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Instantly calculate percentages, discounts, and ratios for daily tasks.</p>
-                </div>
-                <div class="mt-8">
-                    <a href="percentage-calculator.html" class="inline-flex items-center justify-center w-full bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-cyan-600/20">
-                        Launch Tool &rarr;
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tool 7: Unit Converter -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-rose-500/10 flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 bg-rose-500/10 text-rose-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📏</div>
-                    <h2 class="text-xl font-bold text-white">Unit Converter</h2>
-                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Convert length (CM to Inches) and weight (KG to Pounds) effortlessly.</p>
-                </div>
-                <div class="mt-8">
-                    <a href="unit-converter.html" class="inline-flex items-center justify-center w-full bg-rose-600 hover:bg-rose-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-rose-600/20">
-                        Launch Tool &rarr;
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tool 8: Discount Calculator -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 bg-orange-500/10 text-orange-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🏷️</div>
-                    <h2 class="text-xl font-bold text-white">Discount Calculator</h2>
-                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Calculate exact sale prices and total savings while shopping.</p>
-                </div>
-                <div class="mt-8">
-                    <a href="discount-calculator.html" class="inline-flex items-center justify-center w-full bg-orange-600 hover:bg-orange-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-orange-600/20">
-                        Launch Tool &rarr;
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tool 9: BMI Calculator (NEW) -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-teal-500/10 flex flex-col justify-between group">
+            <!-- Tool 3: BMI Calculator (Calc) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-teal-500/10 flex flex-col justify-between group" data-category="calc">
                 <div>
                     <div class="w-12 h-12 bg-teal-500/10 text-teal-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">⚖️</div>
                     <h2 class="text-xl font-bold text-white">BMI Calculator</h2>
                     <p class="text-slate-400 text-sm mt-2 leading-relaxed">Check your Body Mass Index and weight category for better health tracking.</p>
                 </div>
                 <div class="mt-8">
-                    <a href="bmi-calculator.html" class="inline-flex items-center justify-center w-full bg-teal-600 hover:bg-teal-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-teal-600/20">
-                        Launch Tool &rarr;
-                    </a>
+                    <a href="bmi-calculator.html" class="inline-flex items-center justify-center w-full bg-teal-600 hover:bg-teal-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-teal-600/20">Launch Tool &rarr;</a>
                 </div>
             </div>
 
-            <!-- Tool 10: Digital Stopwatch (NEW) -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/10 flex flex-col justify-between group">
+            <!-- Tool 4: Text Case Converter (Text) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col justify-between group" data-category="text">
+                <div>
+                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🔠</div>
+                    <h2 class="text-xl font-bold text-white">Text Case Converter</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Transform text between UPPERCASE, lowercase, Title Case, and Sentence case.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="case-converter.html" class="inline-flex items-center justify-center w-full bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-amber-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 5: Discount Calculator (Calc) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col justify-between group" data-category="calc">
+                <div>
+                    <div class="w-12 h-12 bg-orange-500/10 text-orange-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🏷️</div>
+                    <h2 class="text-xl font-bold text-white">Discount Calculator</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Calculate exact sale prices and total savings while shopping.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="discount-calculator.html" class="inline-flex items-center justify-center w-full bg-orange-600 hover:bg-orange-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-orange-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 6: QR Code Generator (Utility) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/10 flex flex-col justify-between group" data-category="utility">
+                <div>
+                    <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📱</div>
+                    <h2 class="text-xl font-bold text-white">QR Code Generator</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Convert website links and text into scannable high-resolution QR codes.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="qr-generator.html" class="inline-flex items-center justify-center w-full bg-pink-600 hover:bg-pink-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-pink-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 7: Digital Stopwatch (Utility) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/10 flex flex-col justify-between group" data-category="utility">
                 <div>
                     <div class="w-12 h-12 bg-violet-500/10 text-violet-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">⏱️</div>
                     <h2 class="text-xl font-bold text-white">Digital Stopwatch</h2>
                     <p class="text-slate-400 text-sm mt-2 leading-relaxed">Track elapsed time accurately for study sessions, workouts, or daily tasks.</p>
                 </div>
                 <div class="mt-8">
-                    <a href="stopwatch.html" class="inline-flex items-center justify-center w-full bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-violet-600/20">
-                        Launch Tool &rarr;
-                    </a>
+                    <a href="stopwatch.html" class="inline-flex items-center justify-center w-full bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-violet-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 8: Percentage Calculator (Calc) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col justify-between group" data-category="calc">
+                <div>
+                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📊</div>
+                    <h2 class="text-xl font-bold text-white">Percentage Calculator</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Instantly calculate percentages, discounts, and ratios for daily tasks.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="percentage-calculator.html" class="inline-flex items-center justify-center w-full bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-cyan-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 9: Unit Converter (Calc) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-rose-500/10 flex flex-col justify-between group" data-category="calc">
+                <div>
+                    <div class="w-12 h-12 bg-rose-500/10 text-rose-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📏</div>
+                    <h2 class="text-xl font-bold text-white">Unit Converter</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Convert length (CM to Inches) and weight (KG to Pounds) effortlessly.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="unit-converter.html" class="inline-flex items-center justify-center w-full bg-rose-600 hover:bg-rose-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-rose-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 10: Word & Text Counter (Text) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between group" data-category="text">
+                <div>
+                    <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📝</div>
+                    <h2 class="text-xl font-bold text-white">Word & Text Counter</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Real-time word, character, sentence, and paragraph counter for writers.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="word-counter.html" class="inline-flex items-center justify-center w-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-blue-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 11: Random Number Generator (Utility) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between group" data-category="utility">
+                <div>
+                    <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🎲</div>
+                    <h2 class="text-xl font-bold text-white">Random Number Generator</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Generate custom random numbers instantly for games or lucky draws.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="random-generator.html" class="inline-flex items-center justify-center w-full bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-indigo-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 12: Text to Binary Converter (Security & Dev) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col justify-between group" data-category="security">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">💻</div>
+                    <h2 class="text-xl font-bold text-white">Text to Binary Converter</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Convert English text into binary code (0s and 1s) and back instantly.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="binary-converter.html" class="inline-flex items-center justify-center w-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-emerald-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 13: Text Repeater (Text) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/10 flex flex-col justify-between group" data-category="text">
+                <div>
+                    <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🔁</div>
+                    <h2 class="text-xl font-bold text-white">Text Repeater</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Repeat any word, phrase, or sentence multiple times instantly.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="text-repeater.html" class="inline-flex items-center justify-center w-full bg-pink-600 hover:bg-pink-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-pink-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 14: Tip & Bill Split Calculator (Calc) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col justify-between group" data-category="calc">
+                <div>
+                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🍽️</div>
+                    <h2 class="text-xl font-bold text-white">Tip & Bill Split Calculator</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Calculate restaurant tips and split bills smoothly among friends.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="tip-calculator.html" class="inline-flex items-center justify-center w-full bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-amber-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 15: Password Strength Checker (Security) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col justify-between group" data-category="security">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🛡️</div>
+                    <h2 class="text-xl font-bold text-white">Password Strength Checker</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Test your password security level and find out if it's safe from hackers.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="password-strength.html" class="inline-flex items-center justify-center w-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-emerald-600/20">Launch Tool &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tool 16: Text to Speech Reader (Utility) -->
+            <div class="tool-card bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col justify-between group" data-category="utility">
+                <div>
+                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🔊</div>
+                    <h2 class="text-xl font-bold text-white">Text to Speech Reader</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Type or paste text and listen to it read aloud instantly using your browser.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="text-to-speech.html" class="inline-flex items-center justify-center w-full bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-cyan-600/20">Launch Tool &rarr;</a>
                 </div>
             </div>
 
@@ -198,5 +259,27 @@
         </div>
     </footer>
 
+    <!-- JavaScript for Filtering Categories -->
+    <script>
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.tool-card');
+            const buttons = document.querySelectorAll('.cat-btn');
+
+            // Update active button styles
+            buttons.forEach(btn => {
+                btn.className = "cat-btn bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-5 py-2.5 rounded-xl text-xs font-semibold transition";
+            });
+            document.getElementById('btn-' + category).className = "cat-btn bg-indigo-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-lg shadow-indigo-600/20";
+
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
 </html>
