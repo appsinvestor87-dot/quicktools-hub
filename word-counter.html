@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Word & Character Counter - QuickTools Hub</title>
+    <meta name="description" content="Count words, characters, sentences, and paragraphs in real-time with our free online text analyzer tool.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-indigo-600"><a href="index.html">⚡ QuickTools Hub</a></h1>
+            <nav class="space-x-4 text-sm font-medium text-slate-600">
+                <a href="index.html" class="hover:text-indigo-600">Home</a>
+                <a href="privacy-policy.html" class="hover:text-indigo-600">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Tool Area -->
+    <main class="max-w-2xl mx-auto px-4 py-10 w-full">
+        <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-100">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-extrabold text-slate-900">Word & Character Counter</h2>
+                <p class="text-sm text-slate-500 mt-1">Type or paste your text below to count words and characters instantly.</p>
+            </div>
+
+            <!-- Text Area -->
+            <div class="space-y-4">
+                <textarea id="text-box" rows="6" placeholder="Type or paste your text here..." 
+                    oninput="countText()"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition text-sm resize-none"></textarea>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                    <span class="block text-xs text-slate-400 font-medium uppercase">Words</span>
+                    <span id="word-count" class="text-2xl font-black text-purple-600">0</span>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                    <span class="block text-xs text-slate-400 font-medium uppercase">Characters</span>
+                    <span id="char-count" class="text-2xl font-black text-slate-800">0</span>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                    <span class="block text-xs text-slate-400 font-medium uppercase">Sentences</span>
+                    <span id="sentence-count" class="text-2xl font-black text-slate-800">0</span>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                    <span class="block text-xs text-slate-400 font-medium uppercase">Paragraphs</span>
+                    <span id="para-count" class="text-2xl font-black text-slate-800">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Article Section -->
+        <article class="mt-12 bg-white rounded-2xl p-6 sm:p-8 border border-slate-100 prose prose-slate max-w-none text-sm leading-relaxed text-slate-600">
+            <h3 class="text-lg font-bold text-slate-900 mb-3">About Online Word Counter Tool</h3>
+            <p class="mb-3">Whether you are writing an essay for university, an article for your blog, or a social media caption with strict character limits, keeping track of your word count is vital. Our free online text counter calculates words, characters, sentences, and paragraphs instantly as you type.</p>
+            
+            <h4 class="text-base font-semibold text-slate-800 mt-4 mb-2">Why Do You Need a Word Counter?</h4>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>**Bloggers & Writers:** Helps meet specific SEO article length requirements.</li>
+                <li>**Students:** Ensures assignments fit within required word limits.</li>
+                <li>**Social Media Managers:** Keeps posts within character constraints.</li>
+            </ul>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-6 text-center text-xs text-slate-400">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Logic for Live Counting -->
+    <script>
+        function countText() {
+            const text = document.getElementById('text-box').value;
+
+            // Characters count
+            document.getElementById('char-count').innerText = text.length;
+
+            // Words count
+            const words = text.trim() === '' ? [] : text.trim().split(/\s+/);
+            document.getElementById('word-count').innerText = words.length;
+
+            // Sentences count (split by . ! ?)
+            const sentences = text.trim() === '' ? [] : text.split(/[.!?]+/).filter(Boolean);
+            document.getElementById('sentence-count').innerText = sentences.length;
+
+            // Paragraphs count (split by new lines)
+            const paragraphs = text.trim() === '' ? [] : text.split(/\n+/).filter(Boolean);
+            document.getElementById('para-count').innerText = paragraphs.length;
+        }
+    </script>
+</body>
+</html>
