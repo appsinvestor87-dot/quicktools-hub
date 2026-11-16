@@ -22,11 +22,18 @@
     </header>
 
     <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
-        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl text-center">
+        
+        <!-- Relevant Banner Image/Icon Box -->
+        <div class="text-center mb-6">
+            <div class="w-full h-36 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 border border-purple-500/30 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <span class="text-4xl">📅⏳</span>
+            </div>
             <span class="bg-purple-500/10 text-purple-400 border border-purple-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Calculator</span>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Age Calculator</h1>
-            <p class="text-sm text-slate-400 mt-1 mb-8">Select your date of birth to calculate your exact age.</p>
+            <p class="text-sm text-slate-400 mt-1">Select your date of birth to calculate your exact age.</p>
+        </div>
 
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl text-center mb-10">
             <div class="max-w-md mx-auto space-y-4">
                 <input type="date" id="dob" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
                 <button onclick="calculateAge()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-purple-600/20 text-sm">
@@ -39,6 +46,18 @@
                 <p id="age-output" class="text-xl sm:text-2xl font-black text-purple-400 mt-2">-</p>
             </div>
         </div>
+
+        <!-- SEO Article Section -->
+        <article class="bg-slate-800/30 border border-slate-700/40 rounded-3xl p-6 sm:p-8 text-sm text-slate-400 leading-relaxed space-y-4">
+            <h2 class="text-lg font-bold text-white">How Does the Age Calculator Work?</h2>
+            <p>Our online age calculator computes the precise duration between your date of birth and the current date, breaking it down into exact years, months, and days. It accounts for varying month lengths and leap years automatically.</p>
+            <h3 class="text-base font-semibold text-white">Why Use This Tool?</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Quickly check age requirements for job applications or official forms.</li>
+                <li>Calculate exact milestones, anniversaries, or birthdays.</li>
+                <li>100% private and client-side processing—no data leaves your browser.</li>
+            </ul>
+        </article>
     </main>
 
     <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
