@@ -11,7 +11,6 @@
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
 
-    <!-- Header -->
     <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
             <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
@@ -22,7 +21,6 @@
         </div>
     </header>
 
-    <!-- Main Tool Content -->
     <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
         <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl">
             <div class="text-center mb-8">
@@ -31,7 +29,6 @@
                 <p class="text-sm text-slate-400 mt-1">Upload an image and instantly optimize or resize it for web use.</p>
             </div>
 
-            <!-- Upload Box -->
             <div class="border-2 border-dashed border-slate-700 hover:border-indigo-500/50 rounded-2xl p-8 text-center transition bg-slate-900/40 cursor-pointer relative">
                 <input type="file" id="upload" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" onchange="loadImage(event)">
                 <div class="flex flex-col items-center">
@@ -41,7 +38,6 @@
                 </div>
             </div>
 
-            <!-- Editor Area (Hidden initially) -->
             <div id="editor-area" class="mt-8 hidden space-y-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -49,8 +45,8 @@
                         <input type="number" id="width-input" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
                     </div>
                     <div>
-                        <label class="block text-xs text-slate-400 mb-1">Quality (0.1 to 1.0)</label>
-                        <input type="number" id="quality-input" value="0.8" step="0.1" min="0.1" max="1.0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                        <label class="block text-xs text-slate-400 mb-1">Compression Quality (0.1 to 0.9)</label>
+                        <input type="number" id="quality-input" value="0.8" step="0.1" min="0.1" max="0.9" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
                     </div>
                 </div>
 
@@ -58,7 +54,6 @@
                     Process & Resize Image
                 </button>
 
-                <!-- Result -->
                 <div id="result-box" class="hidden pt-4 border-t border-slate-700 text-center space-y-4">
                     <p class="text-xs text-green-400 font-semibold">Image resized successfully!</p>
                     <img id="output-image" class="max-h-48 mx-auto rounded-xl border border-slate-700">
@@ -97,14 +92,18 @@
             const ctx = canvas.getContext('2d');
             let targetWidth = parseInt(document.getElementById('width-input').value) || loadedImage.width;
             let ratio = targetWidth / loadedImage.width;
-            let targetHeight = loadedImage.height * ratio;
+            let targetHeight = Math.round(loadedImage.height * ratio);
 
             canvas.width = targetWidth;
             canvas.height = targetHeight;
 
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(loadedImage, 0, 0, targetWidth, targetHeight);
 
             let quality = parseFloat(document.getElementById('quality-input').value) || 0.8;
+            if(quality > 0.9) quality = 0.9;
+            if(quality < 0.1) quality = 0.1;
+
             let dataUrl = canvas.toDataURL('image/jpeg', quality);
 
             document.getElementById('output-image').src = dataUrl;
