@@ -3,61 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickTools Hub - Free Online Micro Tools</title>
+    <title>QuickTools Hub - Free Online Micro Tools & Utilities</title>
+    <meta name="description" content="Discover free, fast, and secure browser-based tools including QR code generator, word counter, and background remover. No installation required.">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
 
-    <!-- Header -->
-    <header class="bg-white shadow-sm py-4 px-6">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold text-indigo-600">⚡ QuickTools Hub</h1>
-            <nav class="space-x-4 text-sm font-medium text-slate-600">
-                <a href="index.html" class="hover:text-indigo-600">Home</a>
-                <a href="privacy-policy.html" class="hover:text-indigo-600">Privacy Policy</a>
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent flex items-center gap-2">
+                <span>⚡</span> QuickTools Hub
+            </a>
+            <nav class="hidden sm:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
+                <a href="about.html" class="hover:text-indigo-400 transition">About Us</a>
+                <a href="contact.html" class="hover:text-indigo-400 transition">Contact</a>
+                <a href="privacy-policy.html" class="hover:text-indigo-400 transition">Privacy Policy</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <main class="max-w-5xl mx-auto px-4 py-12 w-full">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="bg-indigo-50 text-indigo-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Free Web Utilities</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Smart Tools for Everyday Tasks</h2>
-            <p class="text-slate-500 mt-2 text-sm sm:text-base">Fast, secure, and 100% free online tools right in your browser. No downloads required.</p>
+    <main class="max-w-6xl mx-auto px-4 py-16 w-full flex-grow">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
+                ✨ Free Web Utilities & Productivity Suite
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                Powerful Tools, <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Made Simple.</span>
+            </h1>
+            <p class="text-slate-400 mt-4 text-base sm:text-lg">
+                Lightning-fast browser utilities designed to make your daily digital tasks effortless. Free, secure, and no downloads needed.
+            </p>
         </div>
 
-        <!-- Tools Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <!-- Tool 1: QR Generator -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition flex flex-col justify-between">
+        <!-- Tools Grid Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Tool 1: Background Remover (NEW) -->
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between group">
                 <div>
-                    <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-lg mb-4">📱</div>
-                    <h3 class="text-lg font-bold text-slate-900">QR Code Generator</h3>
-                    <p class="text-slate-500 text-sm mt-1">Convert any website URL, text, or contact info into a high-quality scannable QR code instantly.</p>
+                    <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🖼️</div>
+                    <h2 class="text-xl font-bold text-white">AI Background Remover</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Remove backgrounds from any image instantly right inside your browser with high precision.</p>
                 </div>
-                <div class="mt-6">
-                    <a href="qr-generator.html" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition">Use Tool &rarr;</a>
+                <div class="mt-8">
+                    <a href="bg-remover.html" class="inline-flex items-center justify-center w-full bg-pink-600 hover:bg-pink-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-pink-600/20">
+                        Launch Tool &rarr;
+                    </a>
                 </div>
             </div>
 
-            <!-- Tool 2: Word Counter -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition flex flex-col justify-between">
+            <!-- Tool 2: QR Generator -->
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between group">
                 <div>
-                    <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center font-bold text-lg mb-4">📝</div>
-                    <h3 class="text-lg font-bold text-slate-900">Word & Character Counter</h3>
-                    <p class="text-slate-500 text-sm mt-1">Count words, characters, sentences, and paragraphs in real-time as you type or paste text.</p>
+                    <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📱</div>
+                    <h2 class="text-xl font-bold text-white">QR Code Generator</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Convert website links, text, or contact information into scannable high-resolution QR codes.</p>
                 </div>
-                <div class="mt-6">
-                    <a href="word-counter.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition">Use Tool &rarr;</a>
+                <div class="mt-8">
+                    <a href="qr-generator.html" class="inline-flex items-center justify-center w-full bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-indigo-600/20">
+                        Launch Tool &rarr;
+                    </a>
                 </div>
             </div>
+
+            <!-- Tool 3: Word Counter -->
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📝</div>
+                    <h2 class="text-xl font-bold text-white">Word & Text Counter</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Real-time word, character, sentence, and paragraph counter for students and writers.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="word-counter.html" class="inline-flex items-center justify-center w-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-purple-600/20">
+                        Launch Tool &rarr;
+                    </a>
+                </div>
+            </div>
+
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-100 py-6 text-center text-xs text-slate-400">
-        <p>&copy; 2026 QuickTools Hub. All rights reserved. Built with love.</p>
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 px-6 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="about.html" class="hover:text-slate-300">About</a>
+                <a href="contact.html" class="hover:text-slate-300">Contact</a>
+                <a href="privacy-policy.html" class="hover:text-slate-300">Privacy Policy</a>
+            </div>
+        </div>
     </footer>
 
 </body>
