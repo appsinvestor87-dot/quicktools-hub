@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator - QuickTools Hub</title>
+    <meta name="description" content="Calculate percentages, discounts, and percentage increases or decreases easily online.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
+            <nav class="space-x-4 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-cyan-400 transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-cyan-400 transition">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl">
+            <div class="text-center mb-8">
+                <span class="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Math Tool</span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Percentage Calculator</h1>
+                <p class="text-sm text-slate-400 mt-1">Quickly solve everyday percentage and discount calculations.</p>
+            </div>
+
+            <!-- Calculator 1 -->
+            <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 mb-6">
+                <p class="text-xs text-slate-400 mb-3 font-medium">What is <span class="text-cyan-400">X%</span> of <span class="text-cyan-400">Y</span>?</p>
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                    <input type="number" id="pct1" placeholder="e.g. 20" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    <span class="text-slate-400 text-sm shrink-0">% of</span>
+                    <input type="number" id="num1" placeholder="e.g. 500" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    <button onclick="calc1()" class="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-6 py-2.5 rounded-xl transition text-sm shrink-0">Calculate</button>
+                </div>
+                <p id="res1" class="mt-4 text-lg font-bold text-cyan-400 hidden"></p>
+            </div>
+
+            <!-- Calculator 2 -->
+            <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5">
+                <p class="text-xs text-slate-400 mb-3 font-medium"><span class="text-cyan-400">X</span> is what percent of <span class="text-cyan-400">Y</span>?</p>
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                    <input type="number" id="num2a" placeholder="e.g. 45" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    <span class="text-slate-400 text-sm shrink-0">is what % of</span>
+                    <input type="number" id="num2b" placeholder="e.g. 150" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    <button onclick="calc2()" class="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-6 py-2.5 rounded-xl transition text-sm shrink-0">Calculate</button>
+                </div>
+                <p id="res2" class="mt-4 text-lg font-bold text-cyan-400 hidden"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calc1() {
+            const p = parseFloat(document.getElementById('pct1').value);
+            const n = parseFloat(document.getElementById('num1').value);
+            if (isNaN(p) || isNaN(n)) return;
+            const ans = (p / 100) * n;
+            const res = document.getElementById('res1');
+            res.innerText = `Result: ${ans}`;
+            res.classList.remove('hidden');
+        }
+
+        function calc2() {
+            const a = parseFloat(document.getElementById('num2a').value);
+            const b = parseFloat(document.getElementById('num2b').value);
+            if (isNaN(a) || isNaN(b) || b === 0) return;
+            const ans = ((a / b) * 100).toFixed(2);
+            const res = document.getElementById('res2');
+            res.innerText = `Result: ${ans}%`;
+            res.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

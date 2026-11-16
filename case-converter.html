@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Case Converter - QuickTools Hub</title>
+    <meta name="description" content="Convert text between UPPERCASE, lowercase, Title Case, and Sentence case instantly.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-white">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
+            <nav class="space-x-4 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-amber-400 transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-amber-400 transition">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl">
+            <div class="text-center mb-6">
+                <span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Text Utility</span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Text Case Converter</h1>
+                <p class="text-sm text-slate-400 mt-1">Paste your text and transform its capitalization style in one click.</p>
+            </div>
+
+            <textarea id="text-input" rows="6" placeholder="Type or paste your text here..." class="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-amber-500 mb-4"></textarea>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4">
+                <button onclick="convertText('upper')" class="bg-slate-800 hover:bg-amber-600 text-white text-xs font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition">UPPERCASE</button>
+                <button onclick="convertText('lower')" class="bg-slate-800 hover:bg-amber-600 text-white text-xs font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition">lowercase</button>
+                <button onclick="convertText('title')" class="bg-slate-800 hover:bg-amber-600 text-white text-xs font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition">Title Case</button>
+                <button onclick="convertText('sentence')" class="bg-slate-800 hover:bg-amber-600 text-white text-xs font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition">Sentence case</button>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="copyText()" id="copy-btn" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white font-semibold py-3 rounded-xl transition text-sm">Copy Text</button>
+                <button onclick="document.getElementById('text-input').value = ''" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-5 py-3 rounded-xl transition text-sm">Clear</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function convertText(type) {
+            const box = document.getElementById('text-input');
+            let text = box.value;
+            if (!text) return;
+
+            if (type === 'upper') {
+                box.value = text.toUpperCase();
+            } else if (type === 'lower') {
+                box.value = text.toLowerCase();
+            } else if (type === 'title') {
+                box.value = text.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            } else if (type === 'sentence') {
+                box.value = text.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, c => c.toUpperCase());
+            }
+        }
+
+        function copyText() {
+            const box = document.getElementById('text-input');
+            navigator.clipboard.writeText(box.value);
+            const btn = document.getElementById('copy-btn');
+            btn.innerText = "Copied to Clipboard!";
+            setTimeout(() => btn.innerText = "Copy Text", 1500);
+        }
+    </script>
+</body>
+</html>

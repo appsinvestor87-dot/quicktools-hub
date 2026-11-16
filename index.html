@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickTools Hub - Free Online Micro Tools & Utilities</title>
-    <meta name="description" content="Discover free, fast, and secure browser-based tools including QR code generator, word counter, image resizer, and age calculator.">
+    <meta name="description" content="Discover free, fast, and secure browser-based tools including QR code generator, password generator, age calculator, word counter, and text converter.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
@@ -40,25 +40,25 @@
             </p>
         </div>
 
-        <!-- Tools Grid Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Tools Grid Section (6 Working Tools) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <!-- Tool 1: Image Resizer -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between group">
+            <!-- Tool 1: Password Generator -->
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col justify-between group">
                 <div>
-                    <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🖼️</div>
-                    <h2 class="text-xl font-bold text-white">Image Resizer</h2>
-                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Compress and resize your images instantly right inside your browser.</p>
+                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🔐</div>
+                    <h2 class="text-xl font-bold text-white">Password Generator</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Generate strong, unbreakable random passwords with custom length and symbols.</p>
                 </div>
                 <div class="mt-8">
-                    <a href="image-resizer.html" class="inline-flex items-center justify-center w-full bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-indigo-600/20">
+                    <a href="password-generator.html" class="inline-flex items-center justify-center w-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-emerald-600/20">
                         Launch Tool &rarr;
                     </a>
                 </div>
             </div>
 
             <!-- Tool 2: Age Calculator -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between group">
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 flex flex-col justify-between group">
                 <div>
                     <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📅</div>
                     <h2 class="text-xl font-bold text-white">Age Calculator</h2>
@@ -72,7 +72,7 @@
             </div>
 
             <!-- Tool 3: QR Generator -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between group">
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/10 flex flex-col justify-between group">
                 <div>
                     <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📱</div>
                     <h2 class="text-xl font-bold text-white">QR Code Generator</h2>
@@ -86,14 +86,42 @@
             </div>
 
             <!-- Tool 4: Word Counter -->
-            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between group">
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between group">
                 <div>
                     <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📝</div>
                     <h2 class="text-xl font-bold text-white">Word & Text Counter</h2>
-                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Real-time word, character, and sentence counter for writers.</p>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Real-time word, character, sentence, and paragraph counter for writers.</p>
                 </div>
                 <div class="mt-8">
                     <a href="word-counter.html" class="inline-flex items-center justify-center w-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-blue-600/20">
+                        Launch Tool &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool 5: Text Case Converter -->
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">🔠</div>
+                    <h2 class="text-xl font-bold text-white">Text Case Converter</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Transform text between UPPERCASE, lowercase, Title Case, and Sentence case.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="case-converter.html" class="inline-flex items-center justify-center w-full bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-amber-600/20">
+                        Launch Tool &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool 6: Percentage Calculator -->
+            <div class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 rounded-3xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition">📊</div>
+                    <h2 class="text-xl font-bold text-white">Percentage Calculator</h2>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Instantly calculate percentages, discounts, and ratios for daily tasks.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="percentage-calculator.html" class="inline-flex items-center justify-center w-full bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold py-3 px-4 rounded-xl transition shadow-lg shadow-cyan-600/20">
                         Launch Tool &rarr;
                     </a>
                 </div>
