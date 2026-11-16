@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount & Sale Calculator - QuickTools Hub</title>
+    <meta name="description" content="Calculate sale prices and saved amounts instantly with our free online discount calculator.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-orange-500 selection:text-white">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
+            <nav class="space-x-4 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-orange-400 transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-orange-400 transition">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl">
+            <div class="text-center mb-8">
+                <span class="bg-orange-500/10 text-orange-400 border border-orange-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Shopping Tool</span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Discount Calculator</h1>
+                <p class="text-sm text-slate-400 mt-1">Find out how much you save and what your final price will be during sales.</p>
+            </div>
+
+            <div class="space-y-4 max-w-md mx-auto">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Original Price ($ or Rs)</label>
+                    <input type="number" id="price" placeholder="e.g. 2000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-orange-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Discount Percentage (%)</label>
+                    <input type="number" id="discount" placeholder="e.g. 25" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-orange-500">
+                </div>
+                <button onclick="calculateDiscount()" class="w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-orange-600/20 text-sm">
+                    Calculate Savings
+                </button>
+            </div>
+
+            <div id="result" class="mt-8 hidden bg-slate-900/60 p-6 rounded-2xl border border-slate-700 text-center space-y-2">
+                <p class="text-xs uppercase tracking-wider text-slate-400 font-medium">Final Price to Pay</p>
+                <p id="final-price" class="text-3xl font-black text-orange-400">-</p>
+                <p id="you-save" class="text-xs text-green-400 font-semibold"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calculateDiscount() {
+            const price = parseFloat(document.getElementById('price').value);
+            const discount = parseFloat(document.getElementById('discount').value);
+
+            if (isNaN(price) || isNaN(discount)) {
+                alert("Please enter valid numbers!");
+                return;
+            }
+
+            const savingAmount = (price * discount) / 100;
+            const finalPrice = price - savingAmount;
+
+            document.getElementById('final-price').innerText = finalPrice.toFixed(2);
+            document.getElementById('you-save').innerText = `You Save: ${savingAmount.toFixed(2)} (${discount}% OFF)`;
+            document.getElementById('result').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

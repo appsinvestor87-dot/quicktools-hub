@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter - QuickTools Hub</title>
+    <meta name="description" content="Convert length, weight, and temperature units easily with our free online unit converter.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-rose-500 selection:text-white">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
+            <nav class="space-x-4 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-rose-400 transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-rose-400 transition">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl">
+            <div class="text-center mb-8">
+                <span class="bg-rose-500/10 text-rose-400 border border-rose-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Daily Utility</span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Unit Converter</h1>
+                <p class="text-sm text-slate-400 mt-1">Quickly convert Length (CM to Inches) and Weight (KG to Pounds).</p>
+            </div>
+
+            <!-- Length Converter -->
+            <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 mb-6 space-y-4">
+                <h3 class="text-sm font-bold text-rose-400">📏 Length Converter (CM ⇄ Inches)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="number" id="cm-input" placeholder="Centimeters (cm)" oninput="convertLength('cm')" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-rose-500">
+                    <input type="number" id="inch-input" placeholder="Inches (in)" oninput="convertLength('inch')" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-rose-500">
+                </div>
+            </div>
+
+            <!-- Weight Converter -->
+            <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 space-y-4">
+                <h3 class="text-sm font-bold text-rose-400">⚖️ Weight Converter (KG ⇄ Pounds)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="number" id="kg-input" placeholder="Kilograms (kg)" oninput="convertWeight('kg')" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-rose-500">
+                    <input type="number" id="lb-input" placeholder="Pounds (lbs)" oninput="convertWeight('lb')" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-rose-500">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function convertLength(type) {
+            const cm = document.getElementById('cm-input');
+            const inch = document.getElementById('inch-input');
+            if (type === 'cm') {
+                inch.value = cm.value ? (cm.value / 2.54).toFixed(2) : '';
+            } else {
+                cm.value = inch.value ? (inch.value * 2.54).toFixed(2) : '';
+            }
+        }
+
+        function convertWeight(type) {
+            const kg = document.getElementById('kg-input');
+            const lb = document.getElementById('lb-input');
+            if (type === 'kg') {
+                lb.value = kg.value ? (kg.value * 2.20462).toFixed(2) : '';
+            } else {
+                kg.value = lb.value ? (lb.value / 2.20462).toFixed(2) : '';
+            }
+        }
+    </script>
+</body>
+</html>
