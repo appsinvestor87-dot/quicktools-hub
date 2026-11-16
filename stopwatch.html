@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch & Timer - QuickTools Hub</title>
+    <meta name="description" content="Use our free online digital stopwatch and timer for tracking time during studies, sports, or cooking.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-violet-500 selection:text-white">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
+            <nav class="space-x-4 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-violet-400 transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-violet-400 transition">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl text-center">
+            <span class="bg-violet-500/10 text-violet-400 border border-violet-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Utility Tool</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Digital Stopwatch</h1>
+            <p class="text-sm text-slate-400 mt-1 mb-8">Track elapsed time easily with start, pause, and reset controls.</p>
+
+            <!-- Timer Display -->
+            <div class="bg-slate-900 border border-slate-700 rounded-3xl p-8 mb-8 max-w-md mx-auto">
+                <div id="display" class="text-4xl sm:text-6xl font-black font-mono text-violet-400 tracking-wider">
+                    00:00:00
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex justify-center gap-4 max-w-md mx-auto">
+                <button onclick="startStopwatch()" class="flex-1 bg-violet-600 hover:bg-violet-500 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-violet-600/20 text-sm">Start</button>
+                <button onclick="pauseStopwatch()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-3 rounded-xl transition border border-slate-700 text-sm">Pause</button>
+                <button onclick="resetStopwatch()" class="flex-1 bg-red-600/20 hover:bg-red-600/30 text-red-400 font-semibold py-3 rounded-xl transition border border-red-500/30 text-sm">Reset</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let startTime = 0;
+        let elapsedTime = 0;
+        let timerInterval;
+        let running = false;
+
+        function timeToString(time) {
+            let diffInHrs = time / 3600000;
+            let hh = Math.floor(diffInHrs);
+
+            let diffInMin = (diffInHrs - hh) * 60;
+            let mm = Math.floor(diffInMin);
+
+            let diffInSec = (diffInMin - mm) * 60;
+            let ss = Math.floor(diffInSec);
+
+            let formattedHrs = hh.toString().padStart(2, "0");
+            let formattedMins = mm.toString().padStart(2, "0");
+            let formattedSecs = ss.toString().padStart(2, "0");
+
+            return `${formattedHrs}:${formattedMins}:${formattedSecs}`;
+        }
+
+        function startStopwatch() {
+            if (!running) {
+                startTime = Date.now() - elapsedTime;
+                timerInterval = setInterval(function() {
+                    elapsedTime = Date.now() - startTime;
+                    document.getElementById("display").innerText = timeToString(elapsedTime);
+                }, 1000);
+                running = true;
+            }
+        }
+
+        function pauseStopwatch() {
+            clearInterval(timerInterval);
+            running = false;
+        }
+
+        function resetStopwatch() {
+            clearInterval(timerInterval);
+            running = false;
+            elapsedTime = 0;
+            document.getElementById("display").innerText = "00:00:00";
+        }
+    </script>
+</body>
+</html>

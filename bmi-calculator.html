@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - QuickTools Hub</title>
+    <meta name="description" content="Calculate your Body Mass Index (BMI) easily and check your weight category with our free health calculator.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">⚡ QuickTools Hub</a>
+            <nav class="space-x-4 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-teal-400 transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-teal-400 transition">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-12 w-full flex-grow">
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl">
+            <div class="text-center mb-8">
+                <span class="bg-teal-500/10 text-teal-400 border border-teal-500/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Health Tool</span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">BMI Calculator</h1>
+                <p class="text-sm text-slate-400 mt-1">Check your Body Mass Index to see if you are in a healthy weight range.</p>
+            </div>
+
+            <div class="space-y-4 max-w-md mx-auto">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="e.g. 65" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-teal-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Height (cm)</label>
+                    <input type="number" id="height" placeholder="e.g. 170" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-teal-500">
+                </div>
+                <button onclick="calculateBMI()" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-teal-600/20 text-sm">
+                    Calculate BMI
+                </button>
+            </div>
+
+            <div id="result" class="mt-8 hidden bg-slate-900/60 p-6 rounded-2xl border border-slate-700 text-center space-y-2">
+                <p class="text-xs uppercase tracking-wider text-slate-400 font-medium">Your BMI Result</p>
+                <p id="bmi-value" class="text-3xl font-black text-teal-400">-</p>
+                <p id="bmi-category" class="text-xs font-semibold text-slate-300"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 QuickTools Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calculateBMI() {
+            const w = parseFloat(document.getElementById('weight').value);
+            const h = parseFloat(document.getElementById('height').value) / 100;
+
+            if (isNaN(w) || isNaN(h) || h <= 0) {
+                alert("Please enter valid weight and height!");
+                return;
+            }
+
+            const bmi = (w / (h * h)).toFixed(1);
+            let category = "";
+            let colorClass = "text-teal-400";
+
+            if (bmi < 18.5) {
+                category = "Underweight";
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                category = "Normal Weight (Healthy)";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                category = "Overweight";
+            } else {
+                category = "Obese";
+            }
+
+            document.getElementById('bmi-value').innerText = bmi;
+            document.getElementById('bmi-category').innerText = `Category: ${category}`;
+            document.getElementById('result').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
